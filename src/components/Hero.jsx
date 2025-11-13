@@ -14,6 +14,7 @@ const Hero = () => {
   const [loadedVideos, setLoadedVideos] = useState(0);
 
   const totalVideos = 4;
+  const videosToLoad = 3; // Number of video elements in the component
   const nextVideoRef = useRef(null);
 
   const handleVideoLoad = () => {
@@ -28,10 +29,10 @@ const Hero = () => {
   };
 
   useEffect(() => {
-    if(loadedVideos === totalVideos -1) {
+    if(loadedVideos === videosToLoad) {
         setIsLoading(false);
     }
-  })
+  }, [loadedVideos, videosToLoad])
 
   useGSAP(() => {
 
