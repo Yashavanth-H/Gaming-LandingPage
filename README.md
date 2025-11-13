@@ -1,16 +1,37 @@
-# React + Vite
+# Awards – Gaming Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Modern landing page built with React, Vite, and Tailwind CSS. It features animated sections (Hero, Products, Contact), responsive layout, and assets served from an app-level public directory.
 
-Currently, two official plugins are available:
+![Hero Preview](/src/public/img/heroPreview.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Tech Stack**
+- React + Vite
+- Tailwind CSS (via `@tailwindcss/vite`)
+- `react-icons`
 
-## React Compiler
+**Getting Started**
+- Install: `npm install`
+- Run dev: `npm run dev` then open `http://localhost:5176`
+- Build: `npm run build`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Assets Configuration**
+- Public assets live under `src/public` and are served from `/` due to `publicDir: 'src/public'` in `vite.config.js`.
+- Examples:
+  - Images: `/img/contact-1.webp`
+  - Video: `/videos/hero-1.mp4`
+  - Audio: `/audio/loop.mp3`
 
-## Expanding the ESLint configuration
+**Key Files**
+- `src/components/Contacts.jsx` – Contact section layout and images
+- `src/components/Footer.jsx` – Footer with social links and icons
+- `src/index.css` – Tailwind base styles and any custom utilities
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+
+**Troubleshooting**
+- If media (videos/audio) 404 or show `net::ERR_ABORTED`, ensure files exist under `src/public` and paths use absolute public URLs like `/videos/hero-1.mp4`.
+- If an icon fails with `ReferenceError`, confirm imports from `react-icons/fa` in `Footer.jsx`.
+
+**License**
+- For personal/demo use unless otherwise specified.
