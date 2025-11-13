@@ -21,6 +21,10 @@ const Hero = () => {
     setLoadedVideos((prev) => prev + 1);
   };
 
+  const handleVideoError = (src) => {
+    console.error(`Failed to load video: ${src}`);
+  };
+
   const upcomingVideoIndex = (currentIndex % totalVideos) + 1;
 
   const handleMiniVdClick = () => {
@@ -100,13 +104,13 @@ const Hero = () => {
           className="origin-center scale-50 opacity-0 transition-all duration-500 ease-in
              hover:scale-100 hover:opacity-100"  >
                 <video
-                ref={nextVideoRef}
                 src={getVdSrc(upcomingVideoIndex)}
                 loop
                 muted
                 id="current-video"
                 className="size-64 origin-center scale-150 object-cover object-center"
                 onLoadedData={handleVideoLoad}
+                onError={() => handleVideoError(getVdSrc(upcomingVideoIndex))}
             />
         </div>
       </div>
@@ -119,6 +123,7 @@ const Hero = () => {
         id="next-video"
         className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
         onLoadedData={handleVideoLoad}
+        onError={() => handleVideoError(getVdSrc(currentIndex))}
       />
 
       <video
@@ -128,6 +133,7 @@ const Hero = () => {
         muted
         className="absolute left-0 top-0 size-full object-cover object-center"
         onLoadedData={handleVideoLoad}
+        onError={() => handleVideoError(getVdSrc(currentIndex === totalVideos ? 1 : currentIndex))}
       />
             </div>
             <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-white">
